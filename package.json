@@ -1,7 +1,7 @@
 {
-  "name": "safenetwork-webapi",
+  "name": "safenetwork-web",
   "version": "0.0.1",
-  "description": "SafeNetwork Web API for services (RESTful in the client using fetch())",
+  "description": "SafeNetwork Web API and services (RESTful in the client using fetch())",
   "main": "index.js",
   "scripts": {
     "test": "echo No lib tests",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thewebalyst/safenetwork-webapi.git"
+    "url": "git+https://github.com/thewebalyst/safenetwork-web.git"
   },
   "keywords": [
     "SOLID",
@@ -25,9 +25,9 @@
   "author": "Mark Hughes",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/thewebalyst/safenetwork-webapi/issues"
+    "url": "https://github.com/thewebalyst/safenetwork-web/issues"
   },
-  "homepage": "https://github.com/thewebalyst/safenetwork-webapi#readme",
+  "homepage": "https://github.com/thewebalyst/safenetwork-web#readme",
   "devDependencies": {
     "webpack": "^3.8.1"
   },

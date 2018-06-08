@@ -2,14 +2,16 @@
 
 # What's This?
 
-A SAFE Network web API with RESTful services (via fetch() in the browser):
+**WARNING: this code is not yet functional!**
+
+A SAFE Network web API with application, file system and RESTful services (via fetch() in the browser):
 
 - Adds support for the `safe:` URI schema to fetch() (and rdflib.js Fetcher using this [rdflib.js fork](https://github.com/theWebalyst/rdflib.js/tree/feature/safenetwork)).
 
 - Includes [LDP](https://www.w3.org/TR/ldp/) service which works with Solid apps via window.fetch() or
 rdflib.js (for an example see this [solid-plume fork](https://github.com/theWebalyst/solid-plume/tree/safenetwork-poc)).
 
-This is a WORK IN PROGRESS but usable if you read the docs in the comments. Some basic usage is included below, but you should refer to the comments in the source, and the solid-plume example above until documentation is available.
+This module is a complete replacement for [safenetwork-webapi](https://github.com/theWebalyst/safenetwork-webapi) which will be depracated once this is complete.
 
 ## Usage example:
 
@@ -18,11 +20,11 @@ This is a WORK IN PROGRESS but usable if you read the docs in the comments. Some
 var Safenetwork = new require('safenetwork-webapi')
 
 // Include from HTML:
-<script src="js/safenetwork-webapi.js"></script>
+<script src="js/safenetwork-web.js"></script>
 
 // Then in App Javascript:
-var Safenetwork = new SafenetworkWebApi
-const fetch = SafenetworkWebApi.protoFetch  // fetch() that supports 'safe:' protocol
+var Safenetwork = new SafenetworkWeb
+const fetch = SafenetworkWeb.protoFetch  // fetch() that supports 'safe:' protocol
 fetch.protocols.safe = Safenetwork.fetch.bind(Safenetwork)
 
 window.addEventListener("beforeunload", function (event) {
@@ -33,7 +35,7 @@ window.addEventListener("beforeunload", function (event) {
 ### Usage with rdflib.js:
 
 ```
-var Safenetwork = new SafenetworkWebApi
+var Safenetwork = new SafenetworkWeb
 var $rdf = require('rdflib')
 $rdf.appFetch = Safenetwork.fetch.bind(Safenetwork) // Hook for rdflib Fetcher
 
@@ -56,23 +58,23 @@ you must also authorise your app or your LDP requests will fail
 (e.g. 401 Access Denied).
 
 You may either authenticate using the SAFE DOM API yourself, and pass
-the appHandle to the SafenetworkWebApi object, or you can use the
+the appHandle to the SafenetworkWeb object, or you can use the
 authorisation methods on that class.
 
-Note that the SafenetworkWebApi class is a high level manager which
+Note that the SafenetworkWeb class is a high level manager which
 provides access to the SAFE DOM API, and to a service based interface.
 It is the service interface which implements LDP, and you can
 must explicitly use this to install an LDP service on a SAFE public
 before the service will operate.
 
-Once the service has been set-up on a public name, the SafenetworkWebApi
+Once the service has been set-up on a public name, the SafenetworkWeb
 will automatically activate it.
 
 
 NOTES:
 (Possibly out of date so refer to comments in the code, or documentation when available)
 
-* function SafenetworkWebApi.fetch() is a drop in replacement for fetch(), and is called by proto-fetch for safe: URIs
+* function SafenetworkWeb.fetch() is a drop in replacement for fetch(), and is called by proto-fetch for safe: URIs
 	* for a safe: URI, it looks for as suitable service on the public ID
 	* if the service is present, but not yet active, it activates it by creating a suitable service instance (e.g. of SafeServiceLDP)
 	* if the service is active, it calls handler of the service instance (or if not defaults to safeApp.webFetch())
@@ -98,6 +100,6 @@ Before submitting your code please consider using `Standard.js` formatting. You 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/standard/standard)
 
 # Project License
-This project is made available under the [GPL-3.0 LICENSE](https://opensource.org/licenses/GPL-3.0) except for individual files which contain their own license so long as that file license is compatible with GPL-3.0. 
+This project is made available under the [GPL-3.0 LICENSE](https://opensource.org/licenses/GPL-3.0) except for individual files which contain their own license so long as that file license is compatible with GPL-3.0.
 
 The responsibility for checking this licensing is valid and that your use of this code complies lies with any person and organisation making any use of it.

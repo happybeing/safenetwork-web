@@ -1,18 +1,9 @@
-/*
-//OLD:
-// Must set webpack.config output library to SafenetworkLDP
-const SafenetworkLDP = require('./safenetwork-solid')
+// TODO; not sure if this is correct since re-organising:
+// Must set webpack.config output library to SafenetworkWeb
+// import * as SafenetworkWeb from './safenetwork-web'
 
-module.exports = SafenetworkLDP
-module.exports.SafenetworkLDP = SafenetworkLDP
-*/
+// SafenetworkFsApi plus RESTful web services:
+const SafenetworkWeb = require('./safenetwork-web')
 
-
-// NEW:
-// Must set webpack.config output library to SafenetworkWebApi
-//import * as SafenetworkWebApi from './safenetwork-webapi'
-
-const SafenetworkWebApi = require('./safenetwork-webapi')
-
-exports = module.exports = SafenetworkWebApi
-module.exports.SafenetworkWebApi = SafenetworkWebApi
+exports = module.exports = SafenetworkWeb
+module.exports.SafenetworkWeb = SafenetworkWeb

@@ -44,8 +44,8 @@ module: {
   output: {
 //    path: path.join(__dirname, '/dist/'),
     path: path.resolve(__dirname, 'dist'),
-    filename: 'safenetwork-webapi.js',
-    library: 'SafenetworkWebApi',
+    filename: 'safenetwork-api.js',
+    library: 'SafenetworkbApi',
     libraryTarget: 'umd'
   },
 /*
